@@ -69,7 +69,7 @@
         
         - (int) insertDB{
     Conexion* conx = [[Conexion alloc] init];
-    NSString *cad0 = [self.pkTurn stringByAppendingString:@","];
+    NSString *cad0 = [pkTurn stringByAppendingString:@","];
             NSString *cadtmp1 = [cad0 stringByAppendingString:turnName];
                 NSString *cad1 = [cadtmp1 stringByAppendingString:@","];
                 NSString *cadtmp2 = [cad1 stringByAppendingString:startTime];
@@ -107,13 +107,13 @@
                 NSString *cadtmp16 = [cadtmp6 stringByAppendingString:@"' "];
                 NSString *cad6 = [cad5 stringByAppendingString:cadtmp16];
                 NSString *cadFinal = cad6;
-                NSSTring *cadBase2 = [cadBase stringByAppendingString:[cadFinal]];
+                NSString *cadBase2 = [cadBase stringByAppendingString:cadFinal];
     NSString *cadBase3 = @" WHERE pkTurn = '";
-    NSString *cadBase4 [cadBase3 stringByAppendingString:pkTurn];
-    NSString *cadBase5 [cadBase4 stringByAppendingString:@"' "];
-    NSString *cadsql = [cadBase2 stringByAppendingString:[cadBase5]];
-   	int res = [conx sqlLibre:cadsql];
-    return res;
+    NSString *cadBase4 = [cadBase3 stringByAppendingString:pkTurn];
+    NSString *cadBase5 = [cadBase4 stringByAppendingString:@"' "];
+    NSString *cadsql = [cadBase2 stringByAppendingString:cadBase5];
+   	[conx sqlLibre:cadsql];
+    return 1;
     }
     - (int) delDb{
 	Conexion* conx = [[Conexion alloc] init];
@@ -123,11 +123,17 @@
     - (NSMutableArray*) allDB{
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx ListaDB:@"perupez_hp_turn"];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;
 	    while(sqlite3_step(res) == SQLITE_ROW) {
-        {
-            [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),sqlite3_column_text(res, 2),sqlite3_column_text(res, 3),sqlite3_column_text(res, 4),sqlite3_column_text(res, 5),sqlite3_column_text(res, 6),nil] atIndex: i];
+        NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+                NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+                NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
+                NSString *d3 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 3)];
+                NSString *d4 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 4)];
+                NSString *d5 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 5)];
+                NSString *d6 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 6)];
+                [resultado insertObject: [NSArray arrayWithObjects: d0,d1,d2,d3,d4,d5,d6,nil] atIndex: i];
 			     i = i+1;
             }
     sqlite3_finalize(res);
@@ -135,29 +141,42 @@
     }
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hp_turn where pkTurn = '";
-    NSString *cadBase2 [cadBase stringByAppendingString:pkTurn];
-    NSString *cadBase3 @"' ";
-    NSString *cadsql = [cadBase2 stringByAppendingString:[cadBase3]];
+    NSString *cadBase2 = [cadBase stringByAppendingString:pkTurn];
+    NSString *cadBase3 = @"' ";
+    NSString *cadsql = [cadBase2 stringByAppendingString:cadBase3];
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
-    sqlite3_step(res) == SQLITE_ROW;
-    [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),sqlite3_column_text(res, 2),sqlite3_column_text(res, 3),sqlite3_column_text(res, 4),sqlite3_column_text(res, 5),sqlite3_column_text(res, 6),nil] atIndex: 0];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
+	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+        NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+        NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
+        NSString *d3 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 3)];
+        NSString *d4 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 4)];
+        NSString *d5 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 5)];
+        NSString *d6 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 6)];
+        [resultado insertObject: [NSArray arrayWithObjects: d0,d1,d2,d3,d4,d5,d6,nil] atIndex: i];
+    i = i+1; 
     sqlite3_finalize(res);
 	return resultado;
     }
     - (NSMutableArray*) listParameters: (NSString *)list{
 	Conexion* conx = [[Conexion alloc] init];
-	NSString *sql1 = "Select * from perupez_hp_turn WHERE ";
-	NSSTring *sql = [sql1 stringByAppendingString:list];
+	NSString *sql1 = @"Select * from perupez_hp_turn WHERE ";
+	NSString *sql = [sql1 stringByAppendingString:list];
 	sqlite3_stmt *res = [conx sqlLibre:sql];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;
-	    while(sqlite3_step(res) == SQLITE_ROW) {
-        {
-            [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),sqlite3_column_text(res, 2),sqlite3_column_text(res, 3),sqlite3_column_text(res, 4),sqlite3_column_text(res, 5),sqlite3_column_text(res, 6),nil] atIndex: i];
-                i = i+1;
-            }
+    while(sqlite3_step(res) == SQLITE_ROW){NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+        NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+        NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
+        NSString *d3 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 3)];
+        NSString *d4 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 4)];
+        NSString *d5 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 5)];
+        NSString *d6 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 6)];
+        [resultado insertObject: [NSArray arrayWithObjects: d0,d1,d2,d3,d4,d5,d6,nil] atIndex: i];
+     i = i+1;
+     }
     sqlite3_finalize(res);
 	return resultado;
     }

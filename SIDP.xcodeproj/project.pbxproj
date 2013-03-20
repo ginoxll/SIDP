@@ -68,6 +68,7 @@
 		45BC46B616F8211000988795 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BC469716F8210F00988795 /* Foundation.framework */; };
 		45BC46BE16F8211000988795 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45BC46BC16F8211000988795 /* InfoPlist.strings */; };
 		45BC46C116F8211000988795 /* SIDPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BC46C016F8211000988795 /* SIDPTests.m */; };
+		D0DFE57916FA059D004256AE /* InputOutputJson.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DFE57816FA059D004256AE /* InputOutputJson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +194,8 @@
 		45BC46BD16F8211000988795 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		45BC46BF16F8211000988795 /* SIDPTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SIDPTests.h; sourceTree = "<group>"; };
 		45BC46C016F8211000988795 /* SIDPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SIDPTests.m; sourceTree = "<group>"; };
+		D0DFE57716FA059D004256AE /* InputOutputJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputOutputJson.h; sourceTree = "<group>"; };
+		D0DFE57816FA059D004256AE /* InputOutputJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputOutputJson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +267,8 @@
 		45BC469C16F8210F00988795 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0DFE57716FA059D004256AE /* InputOutputJson.h */,
+				D0DFE57816FA059D004256AE /* InputOutputJson.m */,
 				458D8A2B16F8AF1700EF93EE /* Conexion.h */,
 				458D8A2C16F8AF1700EF93EE /* Conexion.m */,
 				458D8A2D16F8AF1700EF93EE /* error_log.h */,
@@ -544,6 +549,7 @@
 				458D8AB216F8AF1900EF93EE /* perupez_hrm_company.m in Sources */,
 				458D8AB316F8AF1900EF93EE /* perupez_hrm_employee.m in Sources */,
 				458D8AB416F8AF1900EF93EE /* perupez_hrm_position.m in Sources */,
+				D0DFE57916FA059D004256AE /* InputOutputJson.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

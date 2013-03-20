@@ -24,7 +24,7 @@
         
         - (int) insertDB{
     Conexion* conx = [[Conexion alloc] init];
-    NSString *cad0 = [self.pkReceptionSource stringByAppendingString:@","];
+    NSString *cad0 = [pkReceptionSource stringByAppendingString:@","];
             NSString *cad1 = [cad0 stringByAppendingString:receptionSource];
                 NSString *cadsql = cad1;int res = [conx Insertar:@"pkReceptionSource,receptionSource" valores:cadsql nombreTabla:@"perupez_hp_reception_source" ];
     return res;
@@ -37,13 +37,13 @@
                 NSString *cadtmp11 = [cadtmp1 stringByAppendingString:@"' "];
                 NSString *cad1 = [cad0 stringByAppendingString:cadtmp11];
                 NSString *cadFinal = cad1;
-                NSSTring *cadBase2 = [cadBase stringByAppendingString:[cadFinal]];
+                NSString *cadBase2 = [cadBase stringByAppendingString:cadFinal];
     NSString *cadBase3 = @" WHERE pkReceptionSource = '";
-    NSString *cadBase4 [cadBase3 stringByAppendingString:pkReceptionSource];
-    NSString *cadBase5 [cadBase4 stringByAppendingString:@"' "];
-    NSString *cadsql = [cadBase2 stringByAppendingString:[cadBase5]];
-   	int res = [conx sqlLibre:cadsql];
-    return res;
+    NSString *cadBase4 = [cadBase3 stringByAppendingString:pkReceptionSource];
+    NSString *cadBase5 = [cadBase4 stringByAppendingString:@"' "];
+    NSString *cadsql = [cadBase2 stringByAppendingString:cadBase5];
+   	[conx sqlLibre:cadsql];
+    return 1;
     }
     - (int) delDb{
 	Conexion* conx = [[Conexion alloc] init];
@@ -53,11 +53,12 @@
     - (NSMutableArray*) allDB{
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx ListaDB:@"perupez_hp_reception_source"];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;
 	    while(sqlite3_step(res) == SQLITE_ROW) {
-        {
-            [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),nil] atIndex: i];
+        NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+                NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+                [resultado insertObject: [NSArray arrayWithObjects: d0,d1,nil] atIndex: i];
 			     i = i+1;
             }
     sqlite3_finalize(res);
@@ -65,29 +66,32 @@
     }
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hp_reception_source where pkReceptionSource = '";
-    NSString *cadBase2 [cadBase stringByAppendingString:pkReceptionSource];
-    NSString *cadBase3 @"' ";
-    NSString *cadsql = [cadBase2 stringByAppendingString:[cadBase3]];
+    NSString *cadBase2 = [cadBase stringByAppendingString:pkReceptionSource];
+    NSString *cadBase3 = @"' ";
+    NSString *cadsql = [cadBase2 stringByAppendingString:cadBase3];
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
-    sqlite3_step(res) == SQLITE_ROW;
-    [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),nil] atIndex: 0];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
+	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+        NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+        [resultado insertObject: [NSArray arrayWithObjects: d0,d1,nil] atIndex: i];
+    i = i+1; 
     sqlite3_finalize(res);
 	return resultado;
     }
     - (NSMutableArray*) listParameters: (NSString *)list{
 	Conexion* conx = [[Conexion alloc] init];
-	NSString *sql1 = "Select * from perupez_hp_reception_source WHERE ";
-	NSSTring *sql = [sql1 stringByAppendingString:list];
+	NSString *sql1 = @"Select * from perupez_hp_reception_source WHERE ";
+	NSString *sql = [sql1 stringByAppendingString:list];
 	sqlite3_stmt *res = [conx sqlLibre:sql];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;
-	    while(sqlite3_step(res) == SQLITE_ROW) {
-        {
-            [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),nil] atIndex: i];
-                i = i+1;
-            }
+    while(sqlite3_step(res) == SQLITE_ROW){NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+        NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+        [resultado insertObject: [NSArray arrayWithObjects: d0,d1,nil] atIndex: i];
+     i = i+1;
+     }
     sqlite3_finalize(res);
 	return resultado;
     }

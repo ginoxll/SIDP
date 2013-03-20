@@ -375,7 +375,7 @@
         
         - (int) insertDB{
     Conexion* conx = [[Conexion alloc] init];
-    NSString *cad0 = [self.pkEmployee stringByAppendingString:@","];
+    NSString *cad0 = [pkEmployee stringByAppendingString:@","];
             NSString *cadtmp1 = [cad0 stringByAppendingString:fkPerson];
                 NSString *cad1 = [cadtmp1 stringByAppendingString:@","];
                 NSString *cadtmp2 = [cad1 stringByAppendingString:fkCompany];
@@ -583,13 +583,13 @@
                 NSString *cadtmp140 = [cadtmp40 stringByAppendingString:@"' "];
                 NSString *cad40 = [cad39 stringByAppendingString:cadtmp140];
                 NSString *cadFinal = cad40;
-                NSSTring *cadBase2 = [cadBase stringByAppendingString:[cadFinal]];
+                NSString *cadBase2 = [cadBase stringByAppendingString:cadFinal];
     NSString *cadBase3 = @" WHERE pkEmployee = '";
-    NSString *cadBase4 [cadBase3 stringByAppendingString:pkEmployee];
-    NSString *cadBase5 [cadBase4 stringByAppendingString:@"' "];
-    NSString *cadsql = [cadBase2 stringByAppendingString:[cadBase5]];
-   	int res = [conx sqlLibre:cadsql];
-    return res;
+    NSString *cadBase4 = [cadBase3 stringByAppendingString:pkEmployee];
+    NSString *cadBase5 = [cadBase4 stringByAppendingString:@"' "];
+    NSString *cadsql = [cadBase2 stringByAppendingString:cadBase5];
+   	[conx sqlLibre:cadsql];
+    return 1;
     }
     - (int) delDb{
 	Conexion* conx = [[Conexion alloc] init];
@@ -599,11 +599,51 @@
     - (NSMutableArray*) allDB{
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx ListaDB:@"perupez_hrm_employee"];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;
 	    while(sqlite3_step(res) == SQLITE_ROW) {
-        {
-            [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),sqlite3_column_text(res, 2),sqlite3_column_text(res, 3),sqlite3_column_text(res, 4),sqlite3_column_text(res, 5),sqlite3_column_text(res, 6),sqlite3_column_text(res, 7),sqlite3_column_text(res, 8),sqlite3_column_text(res, 9),sqlite3_column_text(res, 10),sqlite3_column_text(res, 11),sqlite3_column_text(res, 12),sqlite3_column_text(res, 13),sqlite3_column_text(res, 14),sqlite3_column_text(res, 15),sqlite3_column_text(res, 16),sqlite3_column_text(res, 17),sqlite3_column_text(res, 18),sqlite3_column_text(res, 19),sqlite3_column_text(res, 20),sqlite3_column_text(res, 21),sqlite3_column_text(res, 22),sqlite3_column_text(res, 23),sqlite3_column_text(res, 24),sqlite3_column_text(res, 25),sqlite3_column_text(res, 26),sqlite3_column_text(res, 27),sqlite3_column_text(res, 28),sqlite3_column_text(res, 29),sqlite3_column_text(res, 30),sqlite3_column_text(res, 31),sqlite3_column_text(res, 32),sqlite3_column_text(res, 33),sqlite3_column_text(res, 34),sqlite3_column_text(res, 35),sqlite3_column_text(res, 36),sqlite3_column_text(res, 37),sqlite3_column_text(res, 38),sqlite3_column_text(res, 39),sqlite3_column_text(res, 40),nil] atIndex: i];
+        NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+                NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+                NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
+                NSString *d3 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 3)];
+                NSString *d4 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 4)];
+                NSString *d5 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 5)];
+                NSString *d6 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 6)];
+                NSString *d7 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 7)];
+                NSString *d8 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 8)];
+                NSString *d9 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 9)];
+                NSString *d10 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 10)];
+                NSString *d11 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 11)];
+                NSString *d12 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 12)];
+                NSString *d13 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 13)];
+                NSString *d14 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 14)];
+                NSString *d15 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 15)];
+                NSString *d16 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 16)];
+                NSString *d17 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 17)];
+                NSString *d18 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 18)];
+                NSString *d19 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 19)];
+                NSString *d20 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 20)];
+                NSString *d21 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 21)];
+                NSString *d22 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 22)];
+                NSString *d23 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 23)];
+                NSString *d24 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 24)];
+                NSString *d25 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 25)];
+                NSString *d26 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 26)];
+                NSString *d27 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 27)];
+                NSString *d28 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 28)];
+                NSString *d29 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 29)];
+                NSString *d30 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 30)];
+                NSString *d31 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 31)];
+                NSString *d32 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 32)];
+                NSString *d33 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 33)];
+                NSString *d34 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 34)];
+                NSString *d35 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 35)];
+                NSString *d36 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 36)];
+                NSString *d37 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 37)];
+                NSString *d38 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 38)];
+                NSString *d39 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 39)];
+                NSString *d40 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 40)];
+                [resultado insertObject: [NSArray arrayWithObjects: d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34,d35,d36,d37,d38,d39,d40,nil] atIndex: i];
 			     i = i+1;
             }
     sqlite3_finalize(res);
@@ -611,29 +651,110 @@
     }
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hrm_employee where pkEmployee = '";
-    NSString *cadBase2 [cadBase stringByAppendingString:pkEmployee];
-    NSString *cadBase3 @"' ";
-    NSString *cadsql = [cadBase2 stringByAppendingString:[cadBase3]];
+    NSString *cadBase2 = [cadBase stringByAppendingString:pkEmployee];
+    NSString *cadBase3 = @"' ";
+    NSString *cadsql = [cadBase2 stringByAppendingString:cadBase3];
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
-    sqlite3_step(res) == SQLITE_ROW;
-    [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),sqlite3_column_text(res, 2),sqlite3_column_text(res, 3),sqlite3_column_text(res, 4),sqlite3_column_text(res, 5),sqlite3_column_text(res, 6),sqlite3_column_text(res, 7),sqlite3_column_text(res, 8),sqlite3_column_text(res, 9),sqlite3_column_text(res, 10),sqlite3_column_text(res, 11),sqlite3_column_text(res, 12),sqlite3_column_text(res, 13),sqlite3_column_text(res, 14),sqlite3_column_text(res, 15),sqlite3_column_text(res, 16),sqlite3_column_text(res, 17),sqlite3_column_text(res, 18),sqlite3_column_text(res, 19),sqlite3_column_text(res, 20),sqlite3_column_text(res, 21),sqlite3_column_text(res, 22),sqlite3_column_text(res, 23),sqlite3_column_text(res, 24),sqlite3_column_text(res, 25),sqlite3_column_text(res, 26),sqlite3_column_text(res, 27),sqlite3_column_text(res, 28),sqlite3_column_text(res, 29),sqlite3_column_text(res, 30),sqlite3_column_text(res, 31),sqlite3_column_text(res, 32),sqlite3_column_text(res, 33),sqlite3_column_text(res, 34),sqlite3_column_text(res, 35),sqlite3_column_text(res, 36),sqlite3_column_text(res, 37),sqlite3_column_text(res, 38),sqlite3_column_text(res, 39),sqlite3_column_text(res, 40),nil] atIndex: 0];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
+	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+        NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+        NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
+        NSString *d3 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 3)];
+        NSString *d4 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 4)];
+        NSString *d5 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 5)];
+        NSString *d6 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 6)];
+        NSString *d7 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 7)];
+        NSString *d8 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 8)];
+        NSString *d9 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 9)];
+        NSString *d10 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 10)];
+        NSString *d11 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 11)];
+        NSString *d12 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 12)];
+        NSString *d13 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 13)];
+        NSString *d14 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 14)];
+        NSString *d15 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 15)];
+        NSString *d16 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 16)];
+        NSString *d17 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 17)];
+        NSString *d18 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 18)];
+        NSString *d19 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 19)];
+        NSString *d20 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 20)];
+        NSString *d21 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 21)];
+        NSString *d22 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 22)];
+        NSString *d23 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 23)];
+        NSString *d24 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 24)];
+        NSString *d25 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 25)];
+        NSString *d26 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 26)];
+        NSString *d27 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 27)];
+        NSString *d28 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 28)];
+        NSString *d29 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 29)];
+        NSString *d30 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 30)];
+        NSString *d31 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 31)];
+        NSString *d32 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 32)];
+        NSString *d33 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 33)];
+        NSString *d34 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 34)];
+        NSString *d35 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 35)];
+        NSString *d36 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 36)];
+        NSString *d37 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 37)];
+        NSString *d38 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 38)];
+        NSString *d39 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 39)];
+        NSString *d40 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 40)];
+        [resultado insertObject: [NSArray arrayWithObjects: d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34,d35,d36,d37,d38,d39,d40,nil] atIndex: i];
+    i = i+1; 
     sqlite3_finalize(res);
 	return resultado;
     }
     - (NSMutableArray*) listParameters: (NSString *)list{
 	Conexion* conx = [[Conexion alloc] init];
-	NSString *sql1 = "Select * from perupez_hrm_employee WHERE ";
-	NSSTring *sql = [sql1 stringByAppendingString:list];
+	NSString *sql1 = @"Select * from perupez_hrm_employee WHERE ";
+	NSString *sql = [sql1 stringByAppendingString:list];
 	sqlite3_stmt *res = [conx sqlLibre:sql];
-	NSMutableArray *resultado = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;
-	    while(sqlite3_step(res) == SQLITE_ROW) {
-        {
-            [resultado insertObject: [NSArray arrayWithObjects: sqlite3_column_text(res, 0),sqlite3_column_text(res, 1),sqlite3_column_text(res, 2),sqlite3_column_text(res, 3),sqlite3_column_text(res, 4),sqlite3_column_text(res, 5),sqlite3_column_text(res, 6),sqlite3_column_text(res, 7),sqlite3_column_text(res, 8),sqlite3_column_text(res, 9),sqlite3_column_text(res, 10),sqlite3_column_text(res, 11),sqlite3_column_text(res, 12),sqlite3_column_text(res, 13),sqlite3_column_text(res, 14),sqlite3_column_text(res, 15),sqlite3_column_text(res, 16),sqlite3_column_text(res, 17),sqlite3_column_text(res, 18),sqlite3_column_text(res, 19),sqlite3_column_text(res, 20),sqlite3_column_text(res, 21),sqlite3_column_text(res, 22),sqlite3_column_text(res, 23),sqlite3_column_text(res, 24),sqlite3_column_text(res, 25),sqlite3_column_text(res, 26),sqlite3_column_text(res, 27),sqlite3_column_text(res, 28),sqlite3_column_text(res, 29),sqlite3_column_text(res, 30),sqlite3_column_text(res, 31),sqlite3_column_text(res, 32),sqlite3_column_text(res, 33),sqlite3_column_text(res, 34),sqlite3_column_text(res, 35),sqlite3_column_text(res, 36),sqlite3_column_text(res, 37),sqlite3_column_text(res, 38),sqlite3_column_text(res, 39),sqlite3_column_text(res, 40),nil] atIndex: i];
-                i = i+1;
-            }
+    while(sqlite3_step(res) == SQLITE_ROW){NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+        NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
+        NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
+        NSString *d3 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 3)];
+        NSString *d4 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 4)];
+        NSString *d5 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 5)];
+        NSString *d6 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 6)];
+        NSString *d7 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 7)];
+        NSString *d8 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 8)];
+        NSString *d9 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 9)];
+        NSString *d10 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 10)];
+        NSString *d11 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 11)];
+        NSString *d12 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 12)];
+        NSString *d13 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 13)];
+        NSString *d14 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 14)];
+        NSString *d15 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 15)];
+        NSString *d16 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 16)];
+        NSString *d17 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 17)];
+        NSString *d18 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 18)];
+        NSString *d19 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 19)];
+        NSString *d20 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 20)];
+        NSString *d21 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 21)];
+        NSString *d22 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 22)];
+        NSString *d23 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 23)];
+        NSString *d24 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 24)];
+        NSString *d25 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 25)];
+        NSString *d26 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 26)];
+        NSString *d27 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 27)];
+        NSString *d28 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 28)];
+        NSString *d29 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 29)];
+        NSString *d30 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 30)];
+        NSString *d31 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 31)];
+        NSString *d32 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 32)];
+        NSString *d33 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 33)];
+        NSString *d34 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 34)];
+        NSString *d35 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 35)];
+        NSString *d36 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 36)];
+        NSString *d37 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 37)];
+        NSString *d38 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 38)];
+        NSString *d39 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 39)];
+        NSString *d40 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 40)];
+        [resultado insertObject: [NSArray arrayWithObjects: d0,d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20,d21,d22,d23,d24,d25,d26,d27,d28,d29,d30,d31,d32,d33,d34,d35,d36,d37,d38,d39,d40,nil] atIndex: i];
+     i = i+1;
+     }
     sqlite3_finalize(res);
 	return resultado;
     }
