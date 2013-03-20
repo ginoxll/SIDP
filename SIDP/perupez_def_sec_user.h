@@ -3,7 +3,7 @@
 	//Primera Version - 2013
     
     #import <Foundation/Foundation.h>
-    #import 'Conexion.h'
+    #import "Conexion.h"
     
     @interface perupez_def_sec_user : NSObject{NSString* pkUser;
             NSString* fkTypeUser;
@@ -50,7 +50,7 @@
     - (int) modDB;
     - (int) delDb;
     - (NSMutableArray*) allDB;
-    - (NSMutableArray*) getDb;
+    - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
     
     @end

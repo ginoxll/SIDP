@@ -3,7 +3,7 @@
 	//Primera Version - 2013
     
     #import <Foundation/Foundation.h>
-    #import 'Conexion.h'
+    #import "Conexion.h"
     
     @interface perupez_hrm_position : NSObject{NSString* pkPosition;
             NSString* positionName;
@@ -23,7 +23,7 @@
     - (int) modDB;
     - (int) delDb;
     - (NSMutableArray*) allDB;
-    - (NSMutableArray*) getDb;
+    - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
     
     @end

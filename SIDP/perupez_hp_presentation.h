@@ -3,7 +3,7 @@
 	//Primera Version - 2013
     
     #import <Foundation/Foundation.h>
-    #import 'Conexion.h'
+    #import "Conexion.h"
     
     @interface perupez_hp_presentation : NSObject{NSString* pkPresentation;
             NSString* fkProduct;
@@ -26,7 +26,7 @@
     - (int) modDB;
     - (int) delDb;
     - (NSMutableArray*) allDB;
-    - (NSMutableArray*) getDb;
+    - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
     
     @end
