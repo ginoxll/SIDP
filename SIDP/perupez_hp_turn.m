@@ -139,14 +139,14 @@
     sqlite3_finalize(res);
 	return resultado;
     }
+
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hp_turn where pkTurn = '";
-    NSString *cadBase2 = [cadBase stringByAppendingString:pkTurn];
+    NSString *cadBase2 = [cadBase1 stringByAppendingString:pkTurn];
     NSString *cadBase3 = @"' ";
     NSString *cadsql = [cadBase2 stringByAppendingString:cadBase3];
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
-	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
         NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
@@ -160,6 +160,7 @@
     sqlite3_finalize(res);
 	return resultado;
     }
+
     - (NSMutableArray*) listParameters: (NSString *)list{
 	Conexion* conx = [[Conexion alloc] init];
 	NSString *sql1 = @"Select * from perupez_hp_turn WHERE ";
@@ -180,5 +181,31 @@
     sqlite3_finalize(res);
 	return resultado;
     }
-    @end
+
++ (NSMutableArray*) listTurn
+{
+    NSMutableArray* list = [NSMutableArray new];
+    NSString* query = @"select * from perupez_hp_turn where statusRegister = 1";
+    Conexion* objDataBase = [Conexion new];
     
+    sqlite3_stmt* result = [objDataBase  sqlLibre:query];
+    while(sqlite3_step(result) == SQLITE_ROW)
+    {
+        perupez_hp_turn* obj = [perupez_hp_turn new];
+        [obj set_pkTurn:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 0)]];
+        [obj set_turnName:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 1)]];
+        [obj set_startTime:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 2)]];
+        [obj set_finishTime:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 3)]];
+        [obj set_turnOrder:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 4)]];
+        [list addObject:obj];
+    }
+    sqlite3_finalize(result);
+    return list;
+}
+
+- (NSString*) description
+{
+    return turnName;
+}
+
+    @end

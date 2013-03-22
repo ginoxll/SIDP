@@ -173,7 +173,7 @@
                 NSString *cadtmp10 = [@"registrationDate = '" stringByAppendingString:registrationDate];
                 NSString *cadtmp110 = [cadtmp10 stringByAppendingString:@"',"];
                 NSString *cad10 = [cad9 stringByAppendingString:cadtmp110];
-                NSString *cadtmp11 = [@"statusRegister = '" stringByAppendingString:statusRegister];
+       //         NSString *cadtmp11 = [@"statusRegister = '" stringByAppendingString:statusRegister];
                 NSString *cadtmp111 = [cadtmp11 stringByAppendingString:@"' "];
                 NSString *cad11 = [cad10 stringByAppendingString:cadtmp111];
                 NSString *cadFinal = cad11;
@@ -216,12 +216,11 @@
     }
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hrm_company where pkCompany = '";
-    NSString *cadBase2 = [cadBase stringByAppendingString:pkCompany];
+    NSString *cadBase2 = [cadBase1 stringByAppendingString:pkCompany];
     NSString *cadBase3 = @"' ";
     NSString *cadsql = [cadBase2 stringByAppendingString:cadBase3];
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
-	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
         NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
@@ -265,5 +264,30 @@
     sqlite3_finalize(res);
 	return resultado;
     }
+
++ (NSMutableArray*) listCompany
+{
+    NSMutableArray* list = [NSMutableArray new];
+    NSString* query = @"select * from perupez_hrm_company where statusRegister = 1";
+    Conexion* objDataBase = [Conexion new];
+    
+    sqlite3_stmt* result = [objDataBase  sqlLibre:query];
+    while(sqlite3_step(result) == SQLITE_ROW)
+    {
+        perupez_hrm_company* obj = [perupez_hrm_company new];
+        [obj set_pkCompany:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 0)]];
+        [obj set_ruc:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 4)]];
+        [obj set_companyName:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 5)]];
+        [obj set_companyAddress:[NSString stringWithUTF8String:(char *)sqlite3_column_text(result, 8)]];
+        [list addObject:obj];
+    }
+    sqlite3_finalize(result);
+    return list;
+}
+
+- (NSString*) description
+{
+    return companyName;
+}
     @end
     

@@ -2,8 +2,6 @@
     //Con cariño para Jasoft - 2013
 	//Primera Version - 2013
     
-    #import <Foundation/Foundation.h>
-    #import "Conexion.h"
     
     @interface perupez_hrm_company : NSObject{NSString* pkCompany;
             NSString* fkSector;
@@ -49,5 +47,7 @@
     - (NSMutableArray*) allDB;
     - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
++ (NSMutableArray*) listCompany;
++ (NSString*) description;
     
     @end

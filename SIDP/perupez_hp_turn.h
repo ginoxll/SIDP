@@ -2,9 +2,6 @@
     //Con cariño para Jasoft - 2013
 	//Primera Version - 2013
     
-    #import <Foundation/Foundation.h>
-    #import "Conexion.h"
-    
     @interface perupez_hp_turn : NSObject{NSString* pkTurn;
             NSString* turnName;
             NSString* startTime;
@@ -34,5 +31,7 @@
     - (NSMutableArray*) allDB;
     - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
-    
+    + (NSMutableArray*) listTurn;
+- (NSString*) description;
+
     @end

@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 MAC. All rights reserved.
 //
 
-#import "Conexion.h"
-
 @implementation Conexion
 
 - (NSString *) obtenerRutaBD{
@@ -17,9 +15,9 @@
     rutas = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     dirDocs = [rutas objectAtIndex:0];
     NSFileManager *fileMgr = [NSFileManager defaultManager];
-    rutaBD = [[NSString alloc] initWithString:[dirDocs stringByAppendingPathComponent:@"PeruPezLite.sqlite"]];
+    rutaBD = [[NSString alloc] initWithString:[dirDocs stringByAppendingPathComponent:@"perupez_db.db"]];
     if([fileMgr fileExistsAtPath:rutaBD] == NO){
-        [fileMgr copyItemAtPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"PeruPezLite.sqlite"] toPath:rutaBD error:NULL];
+        [fileMgr copyItemAtPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"perupez_db.db"] toPath:rutaBD error:NULL];
     }
     return rutaBD;
 }
@@ -37,6 +35,7 @@
     if(sqlite3_prepare_v2(bd,sentenciaSQL, -1, &sqlStatement, NULL) != SQLITE_OK){
         NSLog(@"Problema al preparar el statement");
     }
+    sqlite3_close(bd);
     return sqlStatement;
 }
 
@@ -51,6 +50,7 @@
     if(sqlite3_prepare_v2(bd,sentenciaSQL, -1, &sqlStatement, NULL) != SQLITE_OK){
         NSLog(@"Problema al preparar el statement");
     }
+    sqlite3_close(bd);
     return sqlStatement;
 }
 
