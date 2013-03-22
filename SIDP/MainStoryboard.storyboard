@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C54" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12A269" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -72,9 +72,6 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="Z0o-gM-97Z" kind="modal" modalTransitionStyle="crossDissolve" id="2ny-kN-5g6"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -129,13 +126,12 @@ c29wb3J0ZRAQEEBqYXNvZnRzb2x1dGlvbnMuY29tIA
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bannerPanel" destination="h2f-mG-6gs" id="wCM-bh-e2j"/>
-                        <outlet property="btnLogin" destination="c3R-Pv-Pmf" id="LQm-Xg-SvG"/>
                         <outlet property="loginPanel" destination="IDq-ed-ikD" id="W0g-H1-rQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3471" y="-2474"/>
+            <point key="canvasLocation" x="-4271" y="-3298"/>
         </scene>
         <!--Menu View Controller - Menu Principal-->
         <scene sceneID="JHG-2B-ELG">
@@ -329,7 +325,7 @@ c29wb3J0ZRAQEEBqYXNvZnRzb2x1dGlvbnMuY29tIA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jko-1B-Syy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1541" y="-534"/>
+            <point key="canvasLocation" x="-1513" y="-2082"/>
         </scene>
         <!--Reception View Controller - Recepción de Materia Prima-->
         <scene sceneID="pu7-BM-XLa">
@@ -559,7 +555,7 @@ c29wb3J0ZRAQEEBqYXNvZnRzb2x1dGlvbnMuY29tIA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXR-Ij-QyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2551" y="-1622"/>
+            <point key="canvasLocation" x="-3191" y="-3206"/>
         </scene>
     </scenes>
     <resources>

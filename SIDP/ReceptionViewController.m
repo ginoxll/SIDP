@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     [self paintView];
-    listCompany = [perupez_hrm_company listCompany];
+    listCompany = [selectedCompany listCompany];
     
     listExtracction = [[NSMutableArray alloc] initWithObjects:@"Primera declaracion", @"segunda declaración", nil];
 	// Do any additional setup after loading the view.
