@@ -30,5 +30,6 @@
     - (NSMutableArray*) allDB;
     - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
-    
+    - (int) prepareLogin: (NSString *)user pass:(NSString *)pass;
+
     @end

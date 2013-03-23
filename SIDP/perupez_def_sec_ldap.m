@@ -145,5 +145,22 @@
     sqlite3_finalize(res);
 	return resultado;
     }
+
+- (int) prepareLogin: (NSString *)user pass:(NSString *)pass{
+	Conexion* conx = [[Conexion alloc] init];
+	NSString *sql1 = @"Select * from perupez_def_sec_ldap WHERE userLogin='";
+	NSString *sql2 = [sql1 stringByAppendingString:user];
+    NSString *sql3 = [sql2 stringByAppendingString:@"' userPassword ='"];
+    NSString *sql4 = [sql3 stringByAppendingString:pass];
+    NSString *sql = [sql4 stringByAppendingString:@"' "];
+	sqlite3_stmt *res = [conx sqlLibre:sql];
+    if (sqlite3_step(res) == SQLITE_ROW) {
+        sqlite3_finalize(res);
+        return 1;
+    } else {
+        sqlite3_finalize(res);
+        return 0;
+    }
+}
     @end
     
