@@ -18,4 +18,13 @@
     [alert show];
 }
 
++ (void) messageConfirm:(NSString *)textMessage delegate:(id)objDelegate
+{
+    NSString* message = [[@"¿Seguro que desea eliminar " stringByAppendingString:textMessage] stringByAppendingString:@"?"];
+    
+    UIAlertView* alert = [[UIAlertView alloc]
+                          initWithTitle:@"Confirmación" message:message delegate:objDelegate cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Sí", nil
+                          ];
+    [alert show];
+}
 @end

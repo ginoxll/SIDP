@@ -4,7 +4,7 @@
     //Primera Version - 2013
     #import "perupez_hrm_company.h"
     @implementation perupez_hrm_company
-        - (int) set_pkCompany : (NSString *)nuevo_valor{
+    - (int) set_pkCompany : (NSString *)nuevo_valor{
             pkCompany = nuevo_valor;
             return 1;
         }
@@ -138,9 +138,7 @@
                 NSString *cad11 = [cad10 stringByAppendingString:statusRegister];
                 NSString *cadsql = cad11;int res = [conx Insertar:@"pkCompany,fkSector,fkCompanyActivity,fkUbigeo,ruc,companyName,companyEmail,emergencyNumber,companyAddress,companyPhoneNumber,registrationDate,statusRegister" valores:cadsql nombreTabla:@"perupez_hrm_company" ];
     return res;
-    }
-
-- (int) modDB{
+    }- (int) modDB{
     Conexion* conx = [[Conexion alloc] init];
     NSString *cadBase = @"ALTER TABLE perupez_hrm_company SET ";
     NSString *cadtmp0 = [@"pkCompany = '" stringByAppendingString:pkCompany];
@@ -187,20 +185,17 @@
    	[conx sqlLibre:cadsql];
     return 1;
     }
-
     - (int) delDb{
 	Conexion* conx = [[Conexion alloc] init];
 	int res = [conx Borrar:@"pkCompany" valor:pkCompany nombreTabla:@"perupez_hrm_company"];
 	return res;
     }
-
     - (NSMutableArray*) allDB{
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx ListaDB:@"perupez_hrm_company"];
 	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;
-	    while(sqlite3_step(res) == SQLITE_ROW)
-        {
+	    while(sqlite3_step(res) == SQLITE_ROW) {
         NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
                 NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
                 NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
@@ -219,7 +214,6 @@
     sqlite3_finalize(res);
 	return resultado;
     }
-
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hrm_company where pkCompany = '";
     NSString *cadBase2 = [cadBase1 stringByAppendingString:pkCompany];
@@ -228,8 +222,7 @@
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
 	NSMutableArray *resultado = [[NSMutableArray alloc] init];
-	int i = 0;
-        NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
         NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
         NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
         NSString *d3 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 3)];
@@ -246,7 +239,6 @@
     sqlite3_finalize(res);
 	return resultado;
     }
-
     - (NSMutableArray*) listParameters: (NSString *)list{
 	Conexion* conx = [[Conexion alloc] init];
 	NSString *sql1 = @"Select * from perupez_hrm_company WHERE ";
@@ -254,9 +246,7 @@
 	sqlite3_stmt *res = [conx sqlLibre:sql];
 	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;
-    while(sqlite3_step(res) == SQLITE_ROW)
-    {
-        NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
+    while(sqlite3_step(res) == SQLITE_ROW){NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
         NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];
         NSString *d2 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 2)];
         NSString *d3 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 3)];
@@ -275,7 +265,7 @@
 	return resultado;
     }
 
-- (NSMutableArray*) listCompany
++ (NSMutableArray*) listCompany
 {
     NSMutableArray* list = [NSMutableArray new];
     NSString* query = @"select * from perupez_hrm_company where statusRegister = 1";
@@ -299,5 +289,5 @@
 {
     return companyName;
 }
-@end
+    @end
     

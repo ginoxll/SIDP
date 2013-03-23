@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 GinoX. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
 @interface Util : NSObject
 
 + (void) showMessage:(NSString*) message title:(NSString*) title;
++ (void) messageConfirm:(NSString*) textMessage delegate:(id)objDelegate;
 
 @end

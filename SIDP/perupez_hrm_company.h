@@ -47,7 +47,7 @@
     - (NSMutableArray*) allDB;
     - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
-    - (NSMutableArray*) listCompany;
-    - (NSString*) description;
++ (NSMutableArray*) listCompany;
++ (NSString*) description;
     
     @end

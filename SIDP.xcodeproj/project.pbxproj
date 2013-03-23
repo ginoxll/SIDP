@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04B0D32516FCC62A00ED8EDE /* perupez_def_sec_ldap.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B0D32416FCC62A00ED8EDE /* perupez_def_sec_ldap.m */; };
+		046D2EEB16FD412100F4ACAD /* 622F8325-A1AB-42C9-A869-58A48153BDF9.mobileprovision in Resources */ = {isa = PBXBuildFile; fileRef = 046D2EEA16FD412100F4ACAD /* 622F8325-A1AB-42C9-A869-58A48153BDF9.mobileprovision */; };
+		04DD56BF16FDFEFF008F7CC2 /* perupez_def_sec_ldap.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DD56BE16FDFEFF008F7CC2 /* perupez_def_sec_ldap.m */; };
 		458D8A8716F8AF1900EF93EE /* Conexion.m in Sources */ = {isa = PBXBuildFile; fileRef = 458D8A2C16F8AF1700EF93EE /* Conexion.m */; };
 		45BC469616F8210F00988795 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BC469516F8210F00988795 /* UIKit.framework */; };
 		45BC469816F8210F00988795 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BC469716F8210F00988795 /* Foundation.framework */; };
@@ -161,8 +162,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04B0D32316FCC62A00ED8EDE /* perupez_def_sec_ldap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perupez_def_sec_ldap.h; sourceTree = "<group>"; };
-		04B0D32416FCC62A00ED8EDE /* perupez_def_sec_ldap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = perupez_def_sec_ldap.m; sourceTree = "<group>"; };
+		046D2EEA16FD412100F4ACAD /* 622F8325-A1AB-42C9-A869-58A48153BDF9.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "622F8325-A1AB-42C9-A869-58A48153BDF9.mobileprovision"; sourceTree = SOURCE_ROOT; };
+		04DD56BD16FDFEEF008F7CC2 /* perupez_def_sec_ldap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = perupez_def_sec_ldap.h; sourceTree = "<group>"; };
+		04DD56BE16FDFEFF008F7CC2 /* perupez_def_sec_ldap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = perupez_def_sec_ldap.m; sourceTree = "<group>"; };
 		458D8A2B16F8AF1700EF93EE /* Conexion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conexion.h; sourceTree = "<group>"; };
 		458D8A2C16F8AF1700EF93EE /* Conexion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conexion.m; sourceTree = "<group>"; };
 		458D8AB516F8AF9400EF93EE /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -458,6 +460,7 @@
 		45BC469B16F8210F00988795 /* SIDP */ = {
 			isa = PBXGroup;
 			children = (
+				046D2EEA16FD412100F4ACAD /* 622F8325-A1AB-42C9-A869-58A48153BDF9.mobileprovision */,
 				D0EAA82216F925BC00E01435 /* MainStoryboard.storyboard */,
 				45BC46A416F8210F00988795 /* SIDPAppDelegate.h */,
 				45BC46A516F8210F00988795 /* SIDPAppDelegate.m */,
@@ -543,8 +546,8 @@
 		D0EAA82B16F92E4C00E01435 /* Beans */ = {
 			isa = PBXGroup;
 			children = (
-				04B0D32316FCC62A00ED8EDE /* perupez_def_sec_ldap.h */,
-				04B0D32416FCC62A00ED8EDE /* perupez_def_sec_ldap.m */,
+				04DD56BE16FDFEFF008F7CC2 /* perupez_def_sec_ldap.m */,
+				04DD56BD16FDFEEF008F7CC2 /* perupez_def_sec_ldap.h */,
 				D08F502E16FC466B00CD86B5 /* perupez_hrm_company.h */,
 				D08F502F16FC466B00CD86B5 /* perupez_hrm_company.m */,
 				D082613F16FB18100010B58A /* DocumentType.h */,
@@ -875,6 +878,7 @@
 				D0EAA82316F925BC00E01435 /* MainStoryboard.storyboard in Resources */,
 				D08F2B4516FC50C800DD39D3 /* green_1.png in Resources */,
 				D08F2B4616FC50C800DD39D3 /* green_2.png in Resources */,
+				046D2EEB16FD412100F4ACAD /* 622F8325-A1AB-42C9-A869-58A48153BDF9.mobileprovision in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,7 +992,7 @@
 				D08F502D16FC3F0D00CD86B5 /* ReceptionViewController.m in Sources */,
 				D08F503016FC466B00CD86B5 /* perupez_hrm_company.m in Sources */,
 				D09478D016FC9BDD00C9C783 /* test.m in Sources */,
-				04B0D32516FCC62A00ED8EDE /* perupez_def_sec_ldap.m in Sources */,
+				04DD56BF16FDFEFF008F7CC2 /* perupez_def_sec_ldap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,8 +1094,8 @@
 				INFOPLIST_FILE = "SIDP/SIDP-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "73831540-1EEF-40F5-8EAF-C8084DA7793A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "73831540-1EEF-40F5-8EAF-C8084DA7793A";
+				PROVISIONING_PROFILE = "FD6A4FA7-6579-414A-8E0A-D23D137F6DF6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FD6A4FA7-6579-414A-8E0A-D23D137F6DF6";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1107,8 +1111,8 @@
 				INFOPLIST_FILE = "SIDP/SIDP-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "73831540-1EEF-40F5-8EAF-C8084DA7793A";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "73831540-1EEF-40F5-8EAF-C8084DA7793A";
+				PROVISIONING_PROFILE = "FD6A4FA7-6579-414A-8E0A-D23D137F6DF6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FD6A4FA7-6579-414A-8E0A-D23D137F6DF6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

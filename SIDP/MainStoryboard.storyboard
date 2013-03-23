@@ -72,6 +72,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="Z0o-gM-97Z" kind="modal" modalTransitionStyle="crossDissolve" id="2ny-kN-5g6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,12 +129,13 @@ c29wb3J0ZRAQEEBqYXNvZnRzb2x1dGlvbnMuY29tIA
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bannerPanel" destination="h2f-mG-6gs" id="wCM-bh-e2j"/>
+                        <outlet property="btnLogin" destination="c3R-Pv-Pmf" id="LQm-Xg-SvG"/>
                         <outlet property="loginPanel" destination="IDq-ed-ikD" id="W0g-H1-rQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4271" y="-3298"/>
+            <point key="canvasLocation" x="-3471" y="-2474"/>
         </scene>
         <!--Menu View Controller - Menu Principal-->
         <scene sceneID="JHG-2B-ELG">
@@ -325,7 +329,7 @@ c29wb3J0ZRAQEEBqYXNvZnRzb2x1dGlvbnMuY29tIA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jko-1B-Syy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1513" y="-2082"/>
+            <point key="canvasLocation" x="-1541" y="-534"/>
         </scene>
         <!--Reception View Controller - Recepción de Materia Prima-->
         <scene sceneID="pu7-BM-XLa">
@@ -446,7 +450,11 @@ c29wb3J0ZRAQEEBqYXNvZnRzb2x1dGlvbnMuY29tIA
                                         <color key="backgroundColor" red="0.0039215688589999999" green="0.67058825489999996" blue="0.52549022440000004" alpha="1" colorSpace="deviceRGB"/>
                                         <items>
                                             <barButtonItem systemItem="add" id="gj3-pF-pOt"/>
-                                            <barButtonItem systemItem="trash" id="F19-0i-hVO"/>
+                                            <barButtonItem systemItem="trash" id="F19-0i-hVO">
+                                                <connections>
+                                                    <action selector="removeExtracctionDeclaration:" destination="QV5-bN-c72" id="NaI-a6-Xuc"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                         <color key="tintColor" red="0.011764707043766975" green="0.69411766529083252" blue="0.54901963472366333" alpha="1" colorSpace="deviceRGB"/>
                                     </toolbar>
@@ -555,7 +563,7 @@ c29wb3J0ZRAQEEBqYXNvZnRzb2x1dGlvbnMuY29tIA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXR-Ij-QyK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3191" y="-3206"/>
+            <point key="canvasLocation" x="-2551" y="-1622"/>
         </scene>
     </scenes>
     <resources>
@@ -594,6 +602,7 @@ c29wb3J0ZRAQEEBqYXNvZnRzb2x1dGlvbnMuY29tIA
         <class className="ReceptionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ReceptionViewController.h"/>
             <relationships>
+                <relationship kind="action" name="removeExtracctionDeclaration:"/>
                 <relationship kind="outlet" name="cboCompany" candidateClass="STComboText"/>
                 <relationship kind="outlet" name="extracctionPanel" candidateClass="UIView"/>
                 <relationship kind="outlet" name="extracctionTable" candidateClass="UITableView"/>

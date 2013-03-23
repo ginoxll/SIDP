@@ -37,7 +37,7 @@
 {
     [super viewDidLoad];
     [self paintView];
-    listCompany = [selectedCompany listCompany];
+    listCompany = [perupez_hrm_company listCompany];
     
     listExtracction = [[NSMutableArray alloc] initWithObjects:@"Primera declaracion", @"segunda declaración", nil];
 	// Do any additional setup after loading the view.
@@ -54,6 +54,26 @@
 {
     [[extracctionPanel layer] setBorderWidth:1.0f];
     [[extracctionPanel layer] setCornerRadius:4.0f];
+}
+
+// Implementacion de las acciones
+- (IBAction)removeExtracctionDeclaration:(id)sender
+{
+    NSIndexPath* indexPath = [extracctionTable indexPathForSelectedRow];
+    NSString* message = [listExtracction objectAtIndex:[indexPath row]];
+    [Util messageConfirm:message delegate:self];
+}
+
+
+// implementacion del delegado de UiAlertView
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1){
+        NSIndexPath* indexPath = [extracctionTable indexPathForSelectedRow];
+        NSArray* path = [NSArray arrayWithObject:[extracctionTable indexPathForSelectedRow]];
+        [listExtracction removeObjectAtIndex:[indexPath row]];
+        [extracctionTable deleteRowsAtIndexPaths:path withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 // Implementacion de los metodos del delegado del textfield:

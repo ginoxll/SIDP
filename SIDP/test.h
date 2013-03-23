@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 GinoX. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 @interface test : UITableViewController
 

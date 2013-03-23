@@ -6,9 +6,6 @@
 //  Copyright (c) 2013 Miguel Angel Vásquez Jiménez. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
-
 @interface LoginViewController : UIViewController 
 {
     UIView* loginPanel;
