@@ -34,5 +34,6 @@
 @property perupez_hrm_company* selectedCompany;
 
 - (IBAction)removeExtracctionDeclaration:(id)sender;
+- (IBAction)addExtracctionDeclaration:(id)sender;
 
 @end

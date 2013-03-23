@@ -64,6 +64,12 @@
     [Util messageConfirm:message delegate:self];
 }
 
+- (IBAction)addExtracctionDeclaration:(id)sender
+{
+    [listExtracction addObject:@"Tercera Declaracion"];
+    [extracctionTable reloadData];
+}
+
 
 // implementacion del delegado de UiAlertView
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
