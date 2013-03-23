@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 GinoX. All rights reserved.
 //
 #import "perupez_hrm_company.h"
+#import "ExtracctionViewController.h"
 #import "Util.h"
 
-@interface ReceptionViewController : UIViewController <STComboTextDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+@interface ReceptionViewController : UIViewController <STComboTextDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate,ModalExtracctionDelegate>
 {
     UIView* extracctionPanel;
     UITableView* extracctionTable;
@@ -34,6 +35,5 @@
 @property perupez_hrm_company* selectedCompany;
 
 - (IBAction)removeExtracctionDeclaration:(id)sender;
-- (IBAction)addExtracctionDeclaration:(id)sender;
 
 @end

@@ -64,13 +64,6 @@
     [Util messageConfirm:message delegate:self];
 }
 
-- (IBAction)addExtracctionDeclaration:(id)sender
-{
-    [listExtracction addObject:@"Tercera Declaracion"];
-    [extracctionTable reloadData];
-}
-
-
 // implementacion del delegado de UiAlertView
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -140,5 +133,33 @@
     return cell;
 }
 
+// Metodo del protocolo de la ventana Modal:
+
+ //funciones de validacion de formularios:
+- (BOOL) verifyDeclarationIsDuplicated:(NSString*) declarationName
+{
+    BOOL returnValue = false;
+    for(NSString* varDeclaration in listExtracction)
+    {
+        if([varDeclaration isEqual:declarationName])
+        {
+            returnValue = true;
+            break;
+        }
+    }
+    return returnValue;
+}
+
+- (void) addExtracction:(NSString *)declarationName
+{
+    if(![self verifyDeclarationIsDuplicated:declarationName])
+    {
+        [listExtracction addObject:declarationName];
+        [extracctionTable reloadData];
+    }
+    else{
+        [Util showMessage:@"Ya agrego Declaración de Extracción" title:@"Mensaje"];
+    }
+}
 
 @end

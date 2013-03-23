@@ -13,6 +13,8 @@
 @end
 
 @implementation ExtracctionViewController
+@synthesize delegate;
+@synthesize txtDeclarationName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +35,10 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)sendDeclarationName:(id)sender{
+    [delegate addExtracction:txtDeclarationName.text];
 }
 
 @end

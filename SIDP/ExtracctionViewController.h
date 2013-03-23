@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class  ExtracctionViewController;
+
+@protocol ModalExtracctionDelegate <NSObject>
+- (void) addExtracction:(NSString*)declarationName;
+@end
 
 @interface ExtracctionViewController : UIViewController
+@property (nonatomic, retain) IBOutlet UITextField* txtDeclarationName;
+@property (nonatomic, weak) id <ModalExtracctionDelegate> delegate;
+
+- (IBAction)sendDeclarationName:(id)sender;
 
 @end
