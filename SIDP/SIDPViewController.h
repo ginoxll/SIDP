@@ -1,13 +1,13 @@
 //
-//  BaseBean.h
+//  SIDPViewController.h
 //  SIDP
 //
 //  Created by Miguel Angel Vásquez Jiménez on 25/03/13.
 //  Copyright (c) 2013 GinoX. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface BaseBean : NSObject
+@interface SIDPViewController : UITableViewController
 
 @end
