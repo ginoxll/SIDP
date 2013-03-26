@@ -31,5 +31,7 @@
     - (NSMutableArray*) allDB;
     - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
+- (BOOL) updateConfigParamById;
+- (NSMutableDictionary*) getConfigParamById;
     
     @end

@@ -119,4 +119,59 @@
     }
     return verdura;
 }
+
+- (NSMutableArray*) getArrayAsociativeOfRecords:(NSString*)query
+{
+    NSMutableArray* colum = [self getColumNames:query];
+    NSMutableArray* records = [NSMutableArray new];
+    NSString* dbPath = [self obtenerRutaBD];
+    static sqlite3* dataBase;
+    sqlite3_stmt* statement;
+    if(sqlite3_open([dbPath UTF8String], &dataBase) == SQLITE_OK)
+    {
+        if(sqlite3_prepare_v2(dataBase, [query UTF8String], -1, &statement, nil) == SQLITE_OK)
+        {
+            while(sqlite3_step(statement) == SQLITE_ROW)
+            {
+                NSMutableDictionary* row = [NSMutableDictionary new];
+                for(int i = 0; i < [colum count]; i++)
+                {
+                    char* value = (char *)sqlite3_column_text(statement, i);
+                    if(value != nil)
+                        [row setObject:[NSString stringWithUTF8String:value] forKey:[colum objectAtIndex:i]];
+                }
+                [records addObject:row];
+            }
+            sqlite3_finalize(statement);
+        }
+    }
+    sqlite3_close(dataBase);
+    return records;
+}
+
+- (NSMutableArray*) getColumNames:(NSString*)query
+{
+    NSString* dbPath = [self obtenerRutaBD];
+    NSMutableArray* result =  [NSMutableArray new];
+    static sqlite3* dataBase;
+    char* hola = "hola";
+    if(sqlite3_open([dbPath UTF8String], &dataBase) == SQLITE_OK)
+    {
+        sqlite3_exec(dataBase, [query UTF8String], callBackSelect, CFBridgingRetain(result), &hola);
+    }
+    sqlite3_close(dataBase);
+    return result;
+}
+
+int callBackSelect(void* param, int count, char** values, char** columns)
+{
+    NSMutableArray* var = (NSMutableArray*)CFBridgingRelease(param);
+        
+    for(int i = 0; i < count; i++)
+    {
+        NSString* columName = [NSString stringWithUTF8String:columns[i]];
+        [var addObject:columName];
+    }
+    return 1;
+}
 @end

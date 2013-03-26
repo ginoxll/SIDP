@@ -111,6 +111,20 @@
         - (NSString*) get_statusRegister{
             return statusRegister;
         }
+
+- (NSMutableArray*) getList
+{
+    Conexion* obj = [Conexion new];
+    return [obj getArrayAsociativeOfRecords:@"select * from perupez_hrm_company where statusRegister = 1"];
+}
+
+- (NSMutableDictionary*) getCompany
+{
+    NSString* query = [[@"select * from perupez_hrm_company where pkCompany='" stringByAppendingString:pkCompany]stringByAppendingString:@"'"];
+    Conexion* obj = [Conexion new];
+    NSMutableArray* result = [obj getArrayAsociativeOfRecords:query];
+    return [result objectAtIndex:0];
+}
         
         - (int) insertDB{
     Conexion* conx = [[Conexion alloc] init];

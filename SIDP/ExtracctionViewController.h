@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 GinoX. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Util.h"
 @class  ExtracctionViewController;
 
 @protocol ModalExtracctionDelegate <NSObject>
@@ -15,8 +15,12 @@
 
 @interface ExtracctionViewController : UIViewController
 @property (nonatomic, retain) IBOutlet UITextField* txtDeclarationName;
-@property (nonatomic, weak) id <ModalExtracctionDelegate> delegate;
+@property (nonatomic, weak) IBOutlet id <ModalExtracctionDelegate> delegate;
+
+@property (nonatomic, retain) IBOutlet UIButton* btnAccept;
+@property (nonatomic, retain) IBOutlet UIButton* btnCancel;
 
 - (IBAction)sendDeclarationName:(id)sender;
+- (IBAction)cancelForm:(id)sender;
 
 @end

@@ -2,8 +2,6 @@
     //Con cariño para Jasoft - 2013
 	//Primera Version - 2013
     
-    #import <Foundation/Foundation.h>
-    #import "Conexion.h"
     
     @interface perupez_hp_raw_material : NSObject{NSString* pkRawMaterial;
             NSString* fkSpecies;
@@ -28,5 +26,5 @@
     - (NSMutableArray*) allDB;
     - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
-    
+-(NSMutableArray*) getList;
     @end

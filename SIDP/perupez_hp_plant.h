@@ -46,5 +46,7 @@
     - (NSMutableArray*) allDB;
     - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
+- (NSMutableArray*) getListPlantByCompany:(NSString*)pkCompany;
+- (NSMutableDictionary*) getPlant;
     
     @end

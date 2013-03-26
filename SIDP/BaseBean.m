@@ -9,5 +9,6 @@
 #import "BaseBean.h"
 
 @implementation BaseBean
-
+@synthesize valueSearch;
+@synthesize fieldOrder;
 @end

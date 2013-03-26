@@ -17,4 +17,5 @@
 - (sqlite3_stmt *) sqlLibre: (NSString *)consulta;
 - (int) Insertar:(NSString *)campos valores:(NSString *)valores nombreTabla:(NSString *)nombreTabla;
 - (int) Borrar:(NSString *)condicion valor:(NSString *)valor nombreTabla:(NSString *)nombreTabla;
+- (NSMutableArray*) getArrayAsociativeOfRecords:(NSString*)query;
 @end

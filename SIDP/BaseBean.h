@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface BaseBean : NSObject
-
+@property NSString* valueSearch;
+@property NSString* fieldOrder;
 @end

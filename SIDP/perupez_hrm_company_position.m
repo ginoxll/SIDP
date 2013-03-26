@@ -57,7 +57,15 @@
         - (NSString*) get_statusRegister{
             return statusRegister;
         }
-        
+
+- (NSMutableArray*) getListPositionByCompany:(NSString*)pkCompany
+{
+    NSString* query = @"select hrm_p.positionName, hrm_cp.pkCompanyPosition from perupez_hrm_company_position as hrm_cp inner join perupez_hrm_position as hrm_p on hrm_cp.fkPosition = hrm_p.pkPosition where hrm_cp.statusRegister = 1 and hrm_cp.fkCompany = '";
+    query = [[query stringByAppendingString:pkCompany] stringByAppendingString:@"'"];
+    Conexion* obj = [Conexion new];
+    return [obj getArrayAsociativeOfRecords:query];
+}
+
         - (int) insertDB{
     Conexion* conx = [[Conexion alloc] init];
     NSString *cad0 = [pkCompanyPosition stringByAppendingString:@","];
@@ -126,12 +134,11 @@
     }
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hrm_company_position where pkCompanyPosition = '";
-    NSString *cadBase2 = [cadBase stringByAppendingString:pkCompanyPosition];
+    NSString *cadBase2 = [cadBase1 stringByAppendingString:pkCompanyPosition];
     NSString *cadBase3 = @"' ";
     NSString *cadsql = [cadBase2 stringByAppendingString:cadBase3];
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
-	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
         NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];

@@ -13,16 +13,22 @@
 @end
 
 @implementation ReceptionViewController
+
 @synthesize extracctionPanel;
+@synthesize extracctionTable;
+
 @synthesize txtLote;
 @synthesize txtMatricula;
 @synthesize txtProcedence;
 @synthesize txtSupplier;
+
 @synthesize cboCompany;
+
 @synthesize listCompany;
-@synthesize selectedCompany;
 @synthesize listExtracction;
-@synthesize extracctionTable;
+
+@synthesize selectedCompany;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +44,6 @@
     [super viewDidLoad];
     [self paintView];
     listCompany = [perupez_hrm_company listCompany];
-    
     listExtracction = [[NSMutableArray alloc] initWithObjects:@"Primera declaracion", @"segunda declaración", nil];
 	// Do any additional setup after loading the view.
 }
@@ -91,7 +96,8 @@
 
 // Implementacion de los metodos del delegado del StComboboxDelegate:
 - (NSString*)stComboText:(STComboText*)stComboText textForRow:(NSUInteger)row {
-    if(stComboText==self.cboCompany) {
+    if(stComboText==self.cboCompany)
+    {
         return [[listCompany objectAtIndex:row] description];
     }
     return nil;
@@ -107,17 +113,24 @@
 - (void)stComboText:(STComboText*)stComboText didSelectRow:(NSUInteger)row {
     if(stComboText == self.cboCompany) {
         selectedCompany = [listCompany objectAtIndex:row];
-        self.cboCompany.text = [[listCompany objectAtIndex:row] description];
-    } else {
-        self.cboCompany.text = @"";
+        stComboText.text = [[listCompany objectAtIndex:row] description];
     }
+    else {
+        stComboText.text = @"";
+    }
+}
+
+//Implementacion de los metodos del delegado STDateTextDelegate:
+- (void)stDateText:(STDateText*)STDateText dateChangedTo:(NSDate*)date{
+    NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"d-M-yyyy"];
+    STDateText.text = [formater stringFromDate:date];
 }
 
 // Metodos del protocolo del tableview:
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog([NSString stringWithFormat:@"test : %i"], [listExtracction count]);
     return [listExtracction count];
 }
 
@@ -134,6 +147,18 @@
 }
 
 // Metodo del protocolo de la ventana Modal:
+- (void) addExtracction:(NSString *)declarationName
+{
+    if(![self verifyDeclarationIsDuplicated:declarationName])
+    {
+        [listExtracction addObject:declarationName];
+        [extracctionTable reloadData];
+        [self dismissModalViewControllerAnimated:YES];
+    }
+    else{
+        [Util showMessage:@"Ya agrego Declaración de Extracción" title:@"Mensaje"];
+    }
+}
 
  //funciones de validacion de formularios:
 - (BOOL) verifyDeclarationIsDuplicated:(NSString*) declarationName
@@ -150,16 +175,12 @@
     return returnValue;
 }
 
-- (void) addExtracction:(NSString *)declarationName
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if(![self verifyDeclarationIsDuplicated:declarationName])
+    if([segue.identifier isEqualToString:@"modelExtracction"])
     {
-        [listExtracction addObject:declarationName];
-        [extracctionTable reloadData];
-    }
-    else{
-        [Util showMessage:@"Ya agrego Declaración de Extracción" title:@"Mensaje"];
+        ExtracctionViewController* controller = segue.destinationViewController;
+        controller.delegate = self;
     }
 }
-
 @end

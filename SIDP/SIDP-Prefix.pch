@@ -6,6 +6,7 @@
 #import "QuickDialog.h"
 #import "STControls.h"
 #import "Conexion.h"
+#import "BaseBean.h"
 #import <QuartzCore/QuartzCore.h>
 
 #ifndef __IPHONE_3_0

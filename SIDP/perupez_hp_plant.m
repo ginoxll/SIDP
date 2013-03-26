@@ -102,6 +102,22 @@
         - (NSString*) get_statusRegister{
             return statusRegister;
         }
+
+- (NSMutableArray*) getListPlantByCompany:(NSString*)pkCompany
+{
+    NSString* query = @"select * from perupez_hp_plant where statusRegister = 1 and fkCompany = '";
+    query = [[query stringByAppendingString:pkCompany] stringByAppendingString:@"'"];
+    Conexion* obj = [Conexion new];
+    return [obj getArrayAsociativeOfRecords:query];
+}
+
+- (NSMutableDictionary*) getPlant
+{
+    NSString* query = [[@"select * from perupez_hp_plant where pkPlant='" stringByAppendingString:pkPlant]stringByAppendingString:@"'"];
+    Conexion* obj = [Conexion new];
+    NSMutableArray* result = [obj getArrayAsociativeOfRecords:query];
+    return [result objectAtIndex:0];
+}
         
         - (int) insertDB{
     Conexion* conx = [[Conexion alloc] init];
@@ -201,12 +217,11 @@
     }
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hp_plant where pkPlant = '";
-    NSString *cadBase2 = [cadBase stringByAppendingString:pkPlant];
+    NSString *cadBase2 = [cadBase1 stringByAppendingString:pkPlant];
     NSString *cadBase3 = @"' ";
     NSString *cadsql = [cadBase2 stringByAppendingString:cadBase3];
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
-	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
         NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];

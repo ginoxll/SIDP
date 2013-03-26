@@ -48,6 +48,12 @@
         - (NSString*) get_statusRegister{
             return statusRegister;
         }
+
+- (NSMutableArray*) getList
+{
+    Conexion* obj = [Conexion new];
+    return [obj getArrayAsociativeOfRecords:@"select * from perupez_hp_presentation where statusRegister = 1"];
+}
         
         - (int) insertDB{
     Conexion* conx = [[Conexion alloc] init];
@@ -111,12 +117,11 @@
     }
     - (NSMutableArray*) getDB{
     NSString *cadBase1 = @"Select * from perupez_hp_presentation where pkPresentation = '";
-    NSString *cadBase2 = [cadBase stringByAppendingString:pkPresentation];
+    NSString *cadBase2 = [cadBase1 stringByAppendingString:pkPresentation];
     NSString *cadBase3 = @"' ";
     NSString *cadsql = [cadBase2 stringByAppendingString:cadBase3];
 	Conexion* conx = [[Conexion alloc] init];
 	sqlite3_stmt *res = [conx sqlLibre:cadsql];
-	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	NSMutableArray *resultado = [[NSMutableArray alloc] init];
 	int i = 0;NSString *d0 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 0)];
         NSString *d1 =[NSString stringWithUTF8String:(char *)sqlite3_column_text(res, 1)];

@@ -59,12 +59,12 @@
 	//}
 	
     CGFloat width = [self.delegateVCtr view].bounds.size.width;
-    self.viewOfPicker.frame=CGRectMake(0, 700, width, 240);
+    CGFloat height = [self.delegateVCtr view].bounds.size.height;
+    self.viewOfPicker.frame=CGRectMake(0, height - 260, width, 240);
     self.pkrView.frame=CGRectMake(0, 44, width, 216);
     self.tBar.frame=CGRectMake(0, 0, width, 44);
-	
-	[self.pkrView reloadAllComponents];
-	
+    
+    [self.pkrView reloadAllComponents];
 	
 	if(self.defaultFirstSelect) {	
 		[self.pkrView selectRow:0 inComponent:0 animated:YES];
@@ -75,7 +75,11 @@
         [self.viewOfPicker setHidden:false];
     }
     else
+    {
+        [self.pkrView reloadAllComponents];
         [self.viewOfPicker setHidden:false];
+    }
+        
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

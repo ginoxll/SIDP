@@ -31,5 +31,6 @@
     - (NSMutableArray*) allDB;
     - (NSMutableArray*) getDB;
     - (NSMutableArray*) listParameters: (NSString *)list;
+-(NSMutableArray*) getList;
     
     @end

@@ -8,6 +8,7 @@
 
 #import "ExtracctionViewController.h"
 
+
 @interface ExtracctionViewController ()
 
 @end
@@ -15,6 +16,8 @@
 @implementation ExtracctionViewController
 @synthesize delegate;
 @synthesize txtDeclarationName;
+@synthesize btnAccept;
+@synthesize btnCancel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +31,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [btnAccept layer].cornerRadius = 10.0f;
+    [btnAccept layer].masksToBounds = YES;
+    [btnCancel layer].cornerRadius = 10.0f;
+    [btnCancel layer].masksToBounds = YES;
 	// Do any additional setup after loading the view.
 }
 
@@ -37,8 +44,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL) validateForm
+{
+    BOOL returnValue = true;
+    NSString* textValue = [txtDeclarationName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if([textValue isEqualToString:@""])
+    {
+        returnValue = false;
+        [Util showMessage:@"Ingrese Declaración de Extracción" title:@"Mensaje"];
+    }
+    return returnValue;
+}
+
 - (IBAction)sendDeclarationName:(id)sender{
-    [delegate addExtracction:txtDeclarationName.text];
+    if([self validateForm])
+        [delegate addExtracction:[txtDeclarationName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+}
+
+- (IBAction)cancelForm:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
